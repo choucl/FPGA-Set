@@ -5,7 +5,7 @@ module Acc(clk, rst, acc_en, hit, candidate);
     output reg [7:0]    candidate;
     reg [7:0]           psum;
 
-    // candidate
+    //--------------candidate--------------//
     always @(posedge clk) begin
         if (rst)
             candidate <= 8'b0;
@@ -13,7 +13,7 @@ module Acc(clk, rst, acc_en, hit, candidate);
             candidate <= candidate + psum;
     end
 
-    // psum
+    //-----------------psum----------------//
     always @(*) begin
         if ((clk && rst) || !acc_en)
             psum = 8'b0;
