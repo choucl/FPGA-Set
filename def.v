@@ -5,10 +5,11 @@
 `define COORD_SZ     8
 `define CENTRAL_SZ   24
 `define RADIUS_SZ    12
-`define COVERD_SZ    3
+`define COVERED_SZ    3
 `define MODE_SZ      2
 `define LU_BUS_SZ    4
 `define CANDIDATE_SZ 8
+`define SQR_SZ       8
 
 // position of coordinate
 `define X_COORD 7:4

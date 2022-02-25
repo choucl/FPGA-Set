@@ -1,0 +1,6 @@
+# iverilog
+a.out
+*.vcd
+
+# testing
+test.v
