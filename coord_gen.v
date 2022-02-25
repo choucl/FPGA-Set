@@ -9,7 +9,7 @@
 module coord_gen(clk_i, rst_i, start_row_i, coord_en_i, coord_o);
   
   input clk_i, rst_i, coord_en_i;
-  input [3:0] start_row_i;
+  input  [3:0]             start_row_i;
   output [`COORD_SZ - 1:0] coord_o;
 
   reg next_row;
@@ -20,29 +20,26 @@ module coord_gen(clk_i, rst_i, start_row_i, coord_en_i, coord_o);
 
   always @(posedge clk_i or negedge rst_i) begin
     
-    if (rst_i == 1'b1) begin
-      next_row <= 4'b0;
-      x_coord <= 4'b0;
-      y_coord <= 4'b0;
-    end
-    else begin
-      if (coord_en_i == 1'b1) begin
-        x_coord <= 4'b1;              // x start from 1
-        y_coord <= start_row_i;
+      if (rst_i == 1'b1) begin
+          next_row <= 4'b0;
+          x_coord  <= 4'b0;
+          y_coord  <= 4'b0;
       end
       else begin
-        if (x_coord == 4'b1000) begin // when x == 8, y += 1
-          x_coord <= 4'b1;
-          next_row <= ~next_row;
-        end
-        else begin
-          x_coord <= x_coord + 4'b1;
-        end
+          if (coord_en_i == 1'b1) begin
+              x_coord <= 4'b1;              // x start from 1
+              y_coord <= start_row_i;
+          end
+          else begin
+              if (x_coord == 4'b1000) begin // when x == 8, y += 1
+                  x_coord  <= 4'b1;
+                  next_row <= ~next_row;
+              end
+              else begin
+                  x_coord <= x_coord + 4'b1;
+              end
+          end
       end
-    end
   end
 
 endmodule  
-
-
-      
