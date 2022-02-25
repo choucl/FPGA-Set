@@ -1,9 +1,13 @@
+/* pe.v
+ * PE module implementation, processing element 
+ * for calculating distances
+ */
 `include "def.v"
 module PE (
     input [`COORD_SZ-1:0] coord_i,             // coordinate
     input [`RADIUS_SZ-1:0] r_buf_i,            // radius of circle
     input [`CENTRAL_SZ-1:0] cent_buf_i,        // center of circle
-    output [`COVERED_SZ-1:0] covered_o     // output of coverage
+    output [`COVERED_SZ-1:0] covered_o         // output of coverage
 );
 
 reg [`SQR_SZ:0] a_sqr;
