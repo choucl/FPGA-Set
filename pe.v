@@ -13,6 +13,9 @@ module PE (
 reg [`SQR_SZ:0] a_sqr;
 reg [`SQR_SZ:0] b_sqr;
 reg [`SQR_SZ:0] c_sqr;
+reg [`SQR_SZ:0] ra_sqr;
+reg [`SQR_SZ:0] rb_sqr;
+reg [`SQR_SZ:0] rc_sqr;
 
 always @(*) begin
 
@@ -20,24 +23,24 @@ always @(*) begin
            * (coord_i[`X_COORD] - cent_buf_i[`A_X]);
     a_sqr += (coord_i[`Y_COORD] - cent_buf_i[`A_Y]) 
            * (coord_i[`Y_COORD] - cent_buf_i[`A_Y]);
-    a_sqr -= r_buf_i[`A_R] * r_buf_i[`A_R];
+    ra_sqr = r_buf_i[`A_R] * r_buf_i[`A_R];
     
     b_sqr  = (coord_i[`X_COORD] - cent_buf_i[`B_X]) 
            * (coord_i[`X_COORD] - cent_buf_i[`B_X]);
     b_sqr += (coord_i[`Y_COORD] - cent_buf_i[`B_Y]) 
            * (coord_i[`Y_COORD] - cent_buf_i[`B_Y]);
-    b_sqr -= r_buf_i[`B_R] * r_buf_i[`B_R];
+    rb_sqr = r_buf_i[`B_R] * r_buf_i[`B_R];
     
     c_sqr  = (coord_i[`X_COORD] - cent_buf_i[`C_X]) 
            * (coord_i[`X_COORD] - cent_buf_i[`C_X]);
     c_sqr += (coord_i[`Y_COORD] - cent_buf_i[`C_Y]) 
            * (coord_i[`Y_COORD] - cent_buf_i[`C_Y]);
-    c_sqr -= r_buf_i[`C_R] * r_buf_i[`C_R];
+    rc_sqr = r_buf_i[`C_R] * r_buf_i[`C_R];
 
 end
 
-assign covered_o[2] = a_sqr[`SQR_SZ-1:`SQR_SZ-2];
-assign covered_o[1] = b_sqr[`SQR_SZ-1:`SQR_SZ-2];
-assign covered_o[0] = c_sqr[`SQR_SZ-1:`SQR_SZ-2];
+assign covered_o[2] = (ra_sqr >= a_sqr);
+assign covered_o[1] = (rb_sqr >= b_sqr);
+assign covered_o[0] = (rc_sqr >= c_sqr);
 
 endmodule
