@@ -3,10 +3,9 @@
  * with different input modes
  */
 `include "def.v"
-
 module LU (
     input [`COVERED_SZ-1:0] covered_i,
-    input [`MODE_SZ-1:0] mode_i,
+    input [`MODE_SZ-1:0] mode_buf_i,
     output reg hit
 );
 
