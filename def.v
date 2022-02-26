@@ -10,6 +10,9 @@
 `define LU_BUS_SZ    4
 `define CANDIDATE_SZ 8
 `define SQR_SZ       8
+`define ROW_SZ       4
+`define X_COORD_SZ   4
+`define Y_COORD_SZ   4
 
 // position of coordinate
 `define X_COORD 7:4
