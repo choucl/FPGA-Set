@@ -36,8 +36,8 @@ module PE (
 
     end
 
-    assign covered_o[2] = a_sqr[`SQR_SZ:`SQR_SZ-1];
-    assign covered_o[1] = b_sqr[`SQR_SZ:`SQR_SZ-1];
-    assign covered_o[0] = c_sqr[`SQR_SZ:`SQR_SZ-1];
+    assign covered_o[2] = a_sqr[`SQR_SZ:`SQR_SZ-1] | !(|a_sqr); // consider 0 situation
+    assign covered_o[1] = b_sqr[`SQR_SZ:`SQR_SZ-1] | !(|b_sqr);
+    assign covered_o[0] = c_sqr[`SQR_SZ:`SQR_SZ-1] | !(|c_sqr);
 
 endmodule
