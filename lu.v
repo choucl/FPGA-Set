@@ -9,23 +9,15 @@ module LU (
     output reg hit
 );
 
-    reg aorb;
-    reg aandb;
-    reg bandc;
-    reg aandc;
+    assign aandb = covered_i[2] & covered_i[1];
 
     always @(*) begin
 
-        aorb  = covered_i[2] | covered_i[1];
-        aandb = covered_i[2] & covered_i[1];
-        bandc = covered_i[1] & covered_i[0];
-        aandc = covered_i[2] & covered_i[0];
-        
-        case (mode_i)
+        case (mode_buf_i)
             `MODE1: hit = covered_i[2];
             `MODE2: hit = aandb;
-            `MODE3: hit = aorb - aandb;
-            `MODE4: hit = aandb + bandc + aandc - &covered_i;
+            `MODE3: hit = covered_i[2] ^ covered_i[1];
+            `MODE4: hit = (aandb & covered_i[0]) - &covered_i;
             default: hit = 0;
         endcase
     end
