@@ -7,11 +7,11 @@
 `include "def.v"
 
 module coord_gen(
-    input             clk_i, 
-    input             rst_i, 
-    input [`Y_COORD]  start_row_i, 
-    input             coord_en_i, 
-    output            coord_o
+    input                  clk_i, 
+    input                  rst_i, 
+    input  [`Y_COORD]       start_row_i, 
+    input                  coord_en_i, 
+    output [`COORD_SZ-1:0] coord_o
 );
   
     reg next_row;
