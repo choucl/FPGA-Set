@@ -60,7 +60,7 @@ module controller(
             end
             START: ns = BUSY;
             BUSY: begin
-                if (counter == 5'b10000) // BUSY are 17 cycles
+                if (counter == 5'b01111) // BUSY are 17 cycles
                     ns = DONE;
                 else
                     ns = BUSY;
