@@ -15,8 +15,8 @@ module ACC(
     reg [`CANDIDATE_SZ-1:0]         psum;
 
     //  candidate
-    always @(posedge clk_i) begin
-        if (rst_i || acc_clear_i)
+    always @(posedge clk_i or posedge rst_i) begin
+        if (rst_i == 1'b1 || acc_clear_i)
             candidate_o <= `CANDIDATE_SZ'b0;
         else
             candidate_o <= candidate_o + psum;
