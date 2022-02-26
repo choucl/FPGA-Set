@@ -16,7 +16,9 @@ module ACC(
 
     //  candidate
     always @(posedge clk_i or posedge rst_i) begin
-        if (rst_i == 1'b1 || acc_clear_i)
+        if (rst_i == 1'b1)
+            candidate_o <= `CANDIDATE_SZ'b0;
+        else if (acc_clear_i == 1'b1)
             candidate_o <= `CANDIDATE_SZ'b0;
         else
             candidate_o <= candidate_o + psum;
@@ -24,11 +26,10 @@ module ACC(
 
     //  psum
     always @(*) begin
-        if (!acc_en_i)
+        if (acc_en_i == 1'b0)
             psum = `CANDIDATE_SZ'b0;
-        else begin
+        else
             psum = hit_i[0] + hit_i[1] + hit_i[2] + hit_i[3];
-        end
     end
 
 endmodule
