@@ -10,6 +10,8 @@ module LU (
 );
 
     assign aandb = covered_i[2] & covered_i[1];
+    assign bandc = covered_i[1] & covered_i[0];
+    assign aandc = covered_i[2] & covered_i[0];
 
     always @(*) begin
 
@@ -17,7 +19,7 @@ module LU (
             `MODE1: hit = covered_i[2];
             `MODE2: hit = aandb;
             `MODE3: hit = covered_i[2] ^ covered_i[1];
-            `MODE4: hit = |covered_i & !(aandb & covered_i[0]);
+            `MODE4: hit = (aandb | bandc | aandc) & !(aandb & covered_i[0]);
             default: hit = 0;
         endcase
     end
