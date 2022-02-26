@@ -65,12 +65,7 @@ module controller(
                 else
                     ns = BUSY;
             end
-            DONE: begin
-                if (en_i == 1'b1) // next data is ready
-                    ns = START;
-                else
-                    ns = DONE;
-            end
+            DONE: ns = RESET;
             default: ns = RESET;
         endcase
     end
