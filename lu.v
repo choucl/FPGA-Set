@@ -17,7 +17,7 @@ module LU (
             `MODE1: hit = covered_i[2];
             `MODE2: hit = aandb;
             `MODE3: hit = covered_i[2] ^ covered_i[1];
-            `MODE4: hit = |covered_i - &covered_i;
+            `MODE4: hit = |covered_i & !(aandb & covered_i[0]);
             default: hit = 0;
         endcase
     end
