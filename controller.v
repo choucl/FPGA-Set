@@ -6,16 +6,23 @@
 
 `include "def.v"
 
-module controller(clk_i, rst_i, en_i, valid_o, busy_o, acc_en_o, acc_clear_o, buffer_en_o, clear_o, coord_en_o);
+module controller(
+    input  clk_i, 
+    input  rst_i, 
+    input  en_i, 
+    output valid_o, 
+    output busy_o, 
+    output acc_en_o, 
+    output acc_clear_o, 
+    output buffer_en_o, 
+    output clear_o, 
+    output coord_en_o
+);
 
     parameter RESET = 2'd0,
               START = 2'd1,  // start to do logic 
               BUSY  = 2'd2,  // system is busy
               DONE  = 2'd3;  // candidate is correct
-
-    input  clk_i, rst_i, en_i;
-    output valid_o, busy_o, acc_en_o, acc_clear_o, buffer_en_o, clear_o, coord_en_o;
-
 
     reg [4:0] counter; 
     reg [1:0] ns, cs;
@@ -29,7 +36,7 @@ module controller(clk_i, rst_i, en_i, valid_o, busy_o, acc_en_o, acc_clear_o, bu
     assign coord_en_o  = (cs == START)? 1'b1:1'b0;
 
     always @(posedge clk_i or posedge rst_i) begin
-        if (rst_i) begin
+        if (rst_i == 1'b1) begin
             cs      <= RESET;
             counter <= 5'b0;
         end
