@@ -19,10 +19,10 @@
 `define Y_COORD 3:0
 `define A_X     23:20
 `define A_Y     19:16
-`define B_Y     15:12
-`define B_X     11:8
-`define C_Y     7:4
-`define C_X     3:0
+`define B_X     15:12
+`define B_Y     11:8
+`define C_X     7:4
+`define C_Y     3:0
 
 // position of raidus
 `define A_R     11:8
