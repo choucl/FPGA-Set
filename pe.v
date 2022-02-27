@@ -16,23 +16,26 @@ module PE (
 
     always @(*) begin
 
-        a_sqr  = (coord_i[`X_COORD] - cent_buf_i[`A_X]) 
-               * (coord_i[`X_COORD] - cent_buf_i[`A_X]);
-        a_sqr += (coord_i[`Y_COORD] - cent_buf_i[`A_Y]) 
-               * (coord_i[`Y_COORD] - cent_buf_i[`A_Y]);
-        a_sqr -= r_buf_i[`A_R] * r_buf_i[`A_R];
+        a_sqr = (coord_i[`X_COORD] - cent_buf_i[`A_X]) 
+              * (coord_i[`X_COORD] - cent_buf_i[`A_X]);
+        a_sqr = a_sqr 
+              + (coord_i[`Y_COORD] - cent_buf_i[`A_Y]) 
+              * (coord_i[`Y_COORD] - cent_buf_i[`A_Y]);
+        a_sqr = a_sqr - r_buf_i[`A_R] * r_buf_i[`A_R];
         
-        b_sqr  = (coord_i[`X_COORD] - cent_buf_i[`B_X]) 
-               * (coord_i[`X_COORD] - cent_buf_i[`B_X]);
-        b_sqr += (coord_i[`Y_COORD] - cent_buf_i[`B_Y]) 
-               * (coord_i[`Y_COORD] - cent_buf_i[`B_Y]);
-        b_sqr -= r_buf_i[`B_R] * r_buf_i[`B_R];
+        b_sqr = (coord_i[`X_COORD] - cent_buf_i[`B_X]) 
+              * (coord_i[`X_COORD] - cent_buf_i[`B_X]);
+        b_sqr = b_sqr 
+              + (coord_i[`Y_COORD] - cent_buf_i[`B_Y]) 
+              * (coord_i[`Y_COORD] - cent_buf_i[`B_Y]);
+        b_sqr = b_sqr - r_buf_i[`B_R] * r_buf_i[`B_R];
         
-        c_sqr  = (coord_i[`X_COORD] - cent_buf_i[`C_X]) 
-               * (coord_i[`X_COORD] - cent_buf_i[`C_X]);
-        c_sqr += (coord_i[`Y_COORD] - cent_buf_i[`C_Y]) 
-               * (coord_i[`Y_COORD] - cent_buf_i[`C_Y]);
-        c_sqr -= r_buf_i[`C_R] * r_buf_i[`C_R];
+        c_sqr = (coord_i[`X_COORD] - cent_buf_i[`C_X]) 
+              * (coord_i[`X_COORD] - cent_buf_i[`C_X]);
+        c_sqr = c_sqr
+              + (coord_i[`Y_COORD] - cent_buf_i[`C_Y]) 
+              * (coord_i[`Y_COORD] - cent_buf_i[`C_Y]);
+        c_sqr = c_sqr - r_buf_i[`C_R] * r_buf_i[`C_R];
 
     end
 
