@@ -28,7 +28,7 @@ module controller(
     reg [1:0] ns, cs;
 
     assign valid_o     = (cs == DONE)? 1'b1:1'b0;
-    assign busy_o      = (cs == BUSY || cs == DONE)? 1'b1:1'b0;
+    assign busy_o      = (cs == START || cs == BUSY || cs == DONE)? 1'b1:1'b0;
     assign acc_en_o    = (cs == BUSY)? 1'b1:1'b0;
     assign acc_clear_o = (cs == START)? 1'b1:1'b0;
     assign buffer_en_o = (cs == RESET)? en_i:1'bx;
