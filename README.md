@@ -66,7 +66,7 @@ This homework is to design an RTL code to do the counting of the coordinates tha
 
 ## FSM diagram
 
-![](/home/jumha/FPGA-Set/images/FSM.png)
+![](./images/FSM.png)
 
 ### States
 
