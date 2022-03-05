@@ -30,7 +30,7 @@
 `define C_R     3:0
 
 // modes
-`define MODE1  2'd0  // covered in a circle
+`define MODE1  2'd0  // A
 `define MODE2  2'd1  // A & B
-`define MODE3  2'd2  // (A | B) - (A & B)
-`define MODE4  2'd3  // (A & B) + (B & C) + (A & C) - (A | B | C)
+`define MODE3  2'd2  // A ^ B
+`define MODE4  2'd3  // (A & B) + (B & C) + (A & C) - (A & B & C)
