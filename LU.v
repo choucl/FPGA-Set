@@ -1,4 +1,4 @@
-/* lu.v
+/* LU.v
  * LU module implementation, calculate logic
  * with different input modes
  */
@@ -8,6 +8,7 @@ module LU (
     input [`MODE_SZ-1:0] mode_buf_i,
     output reg hit
 );
+    wire aandb, bandc, aandc;
 
     assign aandb = covered_i[2] & covered_i[1];
     assign bandc = covered_i[1] & covered_i[0];

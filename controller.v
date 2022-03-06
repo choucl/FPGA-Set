@@ -43,6 +43,7 @@ module controller(
         else begin
             cs <= ns;
             case (cs)
+                RESET: counter <= counter;
                 START: counter <= 4'b0;
                 BUSY:  counter <= counter + 4'b1;
                 DONE:  counter <= 4'b0;

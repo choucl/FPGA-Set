@@ -19,7 +19,7 @@ module coord_gen(
     reg [`Y_COORD_SZ-1:0] y_coord; // x_coord and y_coor are 4 bits
 
     assign coord_o[`X_COORD] = x_coord;
-    assign coord_o[`Y_COORD] = y_coord + next_row;
+    assign coord_o[`Y_COORD] = y_coord + {3'd0, next_row};
 
     always @(posedge clk_i or negedge rst_i) begin
       
