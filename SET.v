@@ -2,9 +2,9 @@
 `include "controller.v"
 `include "buffer.v"
 `include "coord_gen.v"
-`include "pe.v"
-`include "lu.v"
-`include "acc.v"
+`include "PE.v"
+`include "LU.v"
+`include "ACC.v"
 
 module SET (clk, rst, en, central, radius, mode, busy, valid, candidate);
 

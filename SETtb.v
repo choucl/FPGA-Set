@@ -48,7 +48,7 @@ module testbench;
                 en = 1'b1;
                 central = 24'b0101_0101_0011_0011_0110_0010;
                 radius = 12'b0011_0011_0010;
-                mode = 2'b11;
+                mode = 2'b00;
 			end
 		end
 		

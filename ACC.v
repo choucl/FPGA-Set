@@ -1,4 +1,4 @@
-/* acc.v
+/* ACC.v
  * ACC module implementation, accumulate candidate
  */
 `include "def.v"
@@ -29,7 +29,8 @@ module ACC(
         if (acc_en_i == 1'b0)
             psum = `CANDIDATE_SZ'b0;
         else
-            psum = hit_i[0] + hit_i[1] + hit_i[2] + hit_i[3];
+            psum = {7'd0, hit_i[0]} + {7'd0, hit_i[1]}
+                 + {7'd0, hit_i[2]} + {7'd0, hit_i[3]};
     end
 
 endmodule
